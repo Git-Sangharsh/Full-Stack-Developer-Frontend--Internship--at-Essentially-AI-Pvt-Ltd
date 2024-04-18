@@ -11,7 +11,7 @@ const Stock = () => {
     // Function to fetch stock data from the backend
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/stockdatafile");
+        const response = await axios.get("https://backend-internship-at-essentially-ai-pvt.onrender.com/stockdatafile");
         const slicedStocks = response.data.slice(0, searchCount);
         setStocks(slicedStocks);
       } catch (error) {
