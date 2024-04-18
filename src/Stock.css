@@ -1,0 +1,105 @@
+.stock-wrapper {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+  padding: 30px 0px;
+  background-color: #293745;
+
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0px;
+  flex-direction: column;
+  width: 90%;
+  box-sizing: border-box;
+  padding: 20px;
+  color: whitesmoke;
+}
+
+.stocks-title{
+  color: whitesmoke;
+}
+
+.stock-grid {
+  border: 1px solid rgba(128, 128, 128, 0.537);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 20px;
+  margin: 6px 0px;
+  transition: 0.1s ease-in;
+  border-radius: 6px;
+}
+
+.stock-grid:hover {
+  scale: 1.01;
+  cursor: pointer;
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.12);
+}
+
+.header-row {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+
+.stock-details, .stocks-header{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr  1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.stocks-header{
+  width: 100%;
+}
+
+.stocks-header > h3{
+  width: 100%;
+  text-align: center;
+  color: #3CACD7;
+}
+
+
+.stock-details-p{
+  font-weight: 600;
+}
+
+.search-div{
+  display: flex;
+}
+
+.nav{
+  display: flex;
+  align-items: center;
+  width: 80%;
+  box-sizing: border-box;
+}
+
+.nav > input{
+  width: 100%;
+  padding: 8px;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav > input:focus{
+  outline: none;
+}
+.nav > button{
+  padding: 9px;
+  height: 100%;
+}
+
+.nav > button:hover{
+  cursor: pointer;
+}
