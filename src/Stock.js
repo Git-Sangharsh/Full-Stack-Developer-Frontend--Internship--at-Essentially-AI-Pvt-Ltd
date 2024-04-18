@@ -1,54 +1,84 @@
-// import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./Stock.css";
 
 const Stock = () => {
   const [stocks, setStocks] = useState([]);
-  const [numStocks, setNumStocks] = useState(5); // Default to 5 stocks
+  const [fetchCount, setFetchCount] = useState(0);
+  const [searchCount, setSearchCount] = useState(0);
 
+  useEffect(() => {
+    // Function to fetch stock data from the backend
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/stockdatafile");
+        const slicedStocks = response.data.slice(0, searchCount);
+        setStocks(slicedStocks);
+      } catch (error) {
+        console.error("Error fetching stocks:", error);
+      }
+    };
 
-  const fetchStocks = async () => {
-    try {
-      const response = await axios.get(`/api/stocks?num=${numStocks}`, {
-        headers: {
-          'X-API-Key': 'ViN36JWYjFUcEw7sUxdhfHaXhmlUcpwg',
-          'X-API-Secret': '833ae989-bea7-4561-b7d2-fb6c78a4392a'
-        }
-      });
-      setStocks(response.data.stocks);
-    } catch (error) {
-      console.error('Error fetching stocks:', error);
+    fetchData();
+    const intervalId = setInterval(fetchData, 1000);
+
+    // Clean up interval when component unmounts
+    return () => clearInterval(intervalId);
+  }, [searchCount]);
+
+  const handleFetchStocks = () => {
+    if (fetchCount > 20) {
+      alert("Count should not exceed 20");
+      return;
     }
+
+    // Updating search count
+    setSearchCount(fetchCount);
   };
 
+  console.log("stocks is ", stocks);
 
-  const handleChange = (e) => {
-    const value = parseInt(e.target.value, 10);
-    if (!isNaN(value) && value <= 20) {
-      setNumStocks(value);
-    }
-  };
-
-  console.log("stocks is ",  stocks)
-
-  console.log("hello wordl")
   return (
-    <div>
-      <h1>Stocks Dashboard</h1>
-      <label htmlFor="numStocks">Enter number of stocks (max 20):</label>
-      <input
-        type="number"
-        id="numStocks"
-        value={numStocks}
-        onChange={handleChange}
-        min="1"
-        max="20"
-      />
-      <div>
-        {stocks.map((stock) => (
-          <div key={stock.symbol}>
-            <h3>{stock.symbol}</h3>
-            <p>Price: {stock.price}</p>
-            <p>Open Price: {stock.openPrice}</p>
+    <div className="stock-wrapper">
+      <h1 className="stocks-title">Stocks</h1>
+      <div className="search-div">
+        <input
+          type="number"
+          min="1"
+          max="20"
+          value={fetchCount}
+          onChange={(e) => setFetchCount(parseInt(e.target.value))}
+        />
+        <button onClick={handleFetchStocks}>Search</button>
+      </div>
+
+      <div className="main">
+        <div className="stocks-header">
+          <h3>Symbol</h3>
+          <h3>From</h3>
+          <h3>Open</h3>
+          <h3>Close</h3>
+          <h3>High</h3>
+          <h3>Low</h3>
+          <h3>PreMarket</h3>
+          <h3>Volume</h3>
+        </div>
+        {stocks.map((stock, index) => (
+          <div className="stock-grid" key={index}>
+            {stock.details && (
+              <div className="stock-details">
+                <p className="stock-details-p">{stock.details.symbol}</p>
+                <p className="stock-details-p"> {stock.details.from}</p>
+                <p className="stock-details-p">
+                  {stock.details.open === 0 ? "Fetching Data" : stock.open}
+                </p>
+                <p className="stock-details-p"> {stock.details.close}</p>
+                <p className="stock-details-p"> {stock.details.high}</p>
+                <p className="stock-details-p"> {stock.details.low}</p>
+                <p className="stock-details-p"> {stock.details.preMarket}</p>
+                <p className="stock-details-p"> {stock.details.volume}</p>
+              </div>
+            )}
           </div>
         ))}
       </div>

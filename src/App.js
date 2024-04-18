@@ -1,15 +1,11 @@
 import React from 'react'
 import "./App.css";
-import Secondstock from './Secondstock';
-// import Stock from './Stock';
-// import NewStock from './NewStock';
+import Stock from './Stock';
 
 const App = () => {
   return (
     <div className='App'>
-      {/* <Stock /> */}
-      {/* <NewStock /> */}
-      <Secondstock />
+      <Stock />
     </div>
   )
 }
