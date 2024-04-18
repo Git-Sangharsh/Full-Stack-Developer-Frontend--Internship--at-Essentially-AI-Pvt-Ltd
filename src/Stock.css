@@ -79,6 +79,11 @@
   width: max-content;
 }
 
+html{
+  height: 100vh;
+  background-color: #293745;
+}
+
 .stock-grid {
   border: 1px solid rgba(128, 128, 128, 0.537);
   display: flex;
