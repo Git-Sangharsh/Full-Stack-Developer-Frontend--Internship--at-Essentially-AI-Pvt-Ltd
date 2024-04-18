@@ -68,9 +68,9 @@ const Stock = () => {
             {stock.details && (
               <div className="stock-details">
                 <p className="stock-details-p">{stock.details.symbol}</p>
-                <p className="stock-details-p"> {stock.details.from}</p>
+                <p className="stock-details-p date"> {stock.details.from}</p>
                 <p className="stock-details-p">
-                  {stock.details.open === 0 ? "Fetching Data" : stock.open}
+                  {stock.details.open === 0 ? "Fetching Data" : stock.open.toFixed(2)}
                 </p>
                 <p className="stock-details-p"> {stock.details.close}</p>
                 <p className="stock-details-p"> {stock.details.high}</p>

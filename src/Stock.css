@@ -5,35 +5,36 @@
   flex-direction: column;
   padding: 30px 0px;
   background-color: #293745;
+  padding-top: 0px;
 }
 
-.stocks-title{
+.stocks-title {
   color: whitesmoke;
 }
 
-.search-div{
+.search-div {
   display: flex;
   align-items: center;
   width: 80%;
   box-sizing: border-box;
 }
 
-.search-div > input{
+.search-div > input {
   width: 100%;
   padding: 8px;
   font-weight: 700;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.search-div > input:focus{
+.search-div > input:focus {
   outline: none;
 }
-.search-div > button{
+.search-div > button {
   padding: 9px;
   height: 100%;
 }
 
-.search-div > button:hover{
+.search-div > button:hover {
   cursor: pointer;
 }
 
@@ -49,28 +50,34 @@
   color: whitesmoke;
 }
 
-.stock-details, .stocks-header{
+.stock-details,
+.stocks-header {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr  1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 20px;
   width: 100%;
 }
 
-.stocks-header{
+.stocks-header {
   width: 100%;
 }
 
-.stocks-header > h3{
+.stocks-header > h3 {
   width: 100%;
   text-align: center;
-  color: #3CACD7;
+  color: #3cacd7;
 }
 
-
-.stock-details-p{
+.stock-details-p {
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.date{
+  width: max-content;
+}
 
 .stock-grid {
   border: 1px solid rgba(128, 128, 128, 0.537);
@@ -92,5 +99,44 @@
   box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.12);
 }
 
+@media (max-width: 670px) {
+
+  .main{
+    width: 100%;
+  }
+
+  .stocks-header{
+    font-size: 12px;
+  }
+  .stock-grid {
+    gap: 10px;
+    padding: 0px 10px;
+  }
+
+  .stock-details-p{
+    font-size: 12px;
+  }
+}
 
 
+@media (max-width: 525px) {
+  .stock-details-p, .stocks-header{
+    font-size: 8px;
+  }
+  .main{
+    padding: 10px 10px;
+  }
+
+  .stock-details{
+    gap: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .stocks-header{
+    gap: 0px;
+  }
+  .stocks-header > h3{
+    font-size: 8px;
+  }
+}
