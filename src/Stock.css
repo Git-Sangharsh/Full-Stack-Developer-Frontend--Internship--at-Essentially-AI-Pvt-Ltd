@@ -133,6 +133,15 @@
 }
 
 @media (max-width: 380px) {
+  .stock-wrapper{
+    height: 100vh;
+    overflow: show;
+  }
+
+  .main{
+    background-color: #293745;
+    width: 100%;
+  }
   .stocks-header{
     gap: 0px;
   }
